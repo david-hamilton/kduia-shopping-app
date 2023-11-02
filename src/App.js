@@ -8,7 +8,7 @@ import Location from './components/Location';
 
 function App() {
   return (
-    <div className="App">
+    <AppProvider>
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -33,7 +33,7 @@ function App() {
         
         
         
-    </div>
+    </AppProvider>
   );
 }
 

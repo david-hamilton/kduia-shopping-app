@@ -11,6 +11,9 @@ function App() {
     <AppProvider>
         <div class="container">
             <div class="row">
+                <h1>Company's Budget Allocation</h1>
+            </div>
+            <div class="row">
                 <div class="col-6">
                     <CartValue></CartValue>
                 </div>
@@ -19,9 +22,15 @@ function App() {
                 </div>
             </div>
             <div class="row">
+                <h2>Allocation</h2>
+            </div>
+            <div class="row">
                 <div class="col-12">
                     <ExpenseList></ExpenseList>
                 </div>
+            </div>
+            <div class="row">
+                <h2>Change Allocation</h2>
             </div>
             <div class="row">
                 <div class="col-12">

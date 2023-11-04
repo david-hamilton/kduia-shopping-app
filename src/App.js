@@ -24,7 +24,7 @@ function App() {
                 </div>
             </div>
             <div class="row">
-                <div class="col-7">
+                <div class="col-12">
                     <ItemSelected></ItemSelected>
                 </div>
             </div>

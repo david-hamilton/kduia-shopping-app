@@ -15,7 +15,16 @@ const ExpenseItem = (props) => {
             payload: item,
         });
     };
+    const handleAddItem = () => {
+        const item = {
+            name: props.name,
+        };
 
+        dispatch({
+            type: 'ADD_ITEM',
+            payload: item,
+        });
+    };
 
     return (
         <tr>
@@ -23,6 +32,7 @@ const ExpenseItem = (props) => {
         <td>{props.quantity}</td>
         <td>{Location}{parseInt(props.unitprice)}</td>
         <td>{Location}{parseInt(props.quantity)*parseInt(props.unitprice)}</td>
+        <td><FaTimesCircle size='2.2em' color="green" onClick={handleAddItem}></FaTimesCircle></td>
         <td><FaTimesCircle size='2.2em' color="red" onClick={handleDeleteItem}></FaTimesCircle></td>
         </tr>
     );

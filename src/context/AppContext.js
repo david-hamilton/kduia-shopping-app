@@ -37,7 +37,7 @@ export const AppReducer = (state, action) => {
         case 'DELETE_ITEM':
             state.expenses.map((expense)=>{
                 if(expense.name === action.payload.name) {
-                    expense.quantity = 0;
+                    expense.quantity = expense.quantity - 1;
                 }
                 new_expenses.push(expense);
                 return true;
@@ -47,6 +47,19 @@ export const AppReducer = (state, action) => {
             return {
                 ...state,
             };
+            case 'ADD_ITEM':
+                state.expenses.map((expense)=>{
+                    if(expense.name === action.payload.name) {
+                        expense.quantity = expense.quantity + 1;
+                    }
+                    new_expenses.push(expense);
+                    return true;
+                })
+                state.expenses = new_expenses;
+                action.type = "DONE";
+                return {
+                    ...state,
+                };
     case 'CHG_LOCATION':
             action.type = "DONE";
             state.Location = action.payload;

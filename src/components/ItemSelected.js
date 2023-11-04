@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
 import { AppContext } from '../context/AppContext';
 
 const ItemSelected = (props) => {
@@ -8,7 +7,6 @@ const ItemSelected = (props) => {
     const [name, setName] = useState('');
     const [quantity, setQuantity] = useState('');
     const [action, setAction] = useState('');
-    
 
     const submitEvent = () => {
 
@@ -55,19 +53,16 @@ const ItemSelected = (props) => {
                 <option value="Reduce" name="Reduce">Reduce</option>
                   </select>  
                   <span className="eco" style={{ marginLeft: '2rem', marginRight: '8px'}}></span>
+                        <input
+                            required='required'
+                            type='number'
+                            id='cost'
+                            value={quantity}
+                            style={{size: 10}}
+                            onChange={(event) => setQuantity(event.target.value)}>
+                            </input>
+                        
 
-                    <input
-                        required='required'
-                        type='number'
-                        id='cost'
-                        value={quantity}
-                        style={{size: 10}}
-                        onChange={(event) => setQuantity(event.target.value)}>
-                        </input>
-
-                    <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
-                        Save
-                    </button>
                 </div>
                 </div>
 

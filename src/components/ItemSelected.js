@@ -59,8 +59,10 @@ const ItemSelected = (props) => {
                             id='cost'
                             value={quantity}
                             style={{size: 10}}
+                            type = 'number'
                             onChange={(event) => setQuantity(event.target.value)}>
                             </input>
+                        <button type='submit' className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>Add</button>
                         
 
                 </div>

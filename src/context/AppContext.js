@@ -4,6 +4,7 @@ import React, { createContext, useReducer } from 'react';
 export const AppReducer = (state, action) => {
     let new_expenses = [];
     switch (action.type) {
+
         case 'ADD_QUANTITY':
             let updatedqty = false;
             state.expenses.map((expense)=>{
@@ -20,20 +21,21 @@ export const AppReducer = (state, action) => {
                 ...state,
             };
 
-            case 'RED_QUANTITY':
-                state.expenses.map((expense)=>{
-                    if(expense.name === action.payload.name) {
-                        expense.quantity = expense.quantity - action.payload.quantity;
-                    }
-                    expense.quantity = expense.quantity < 0 ? 0: expense.quantity;
-                    new_expenses.push(expense);
-                    return true;
-                })
-                state.expenses = new_expenses;
-                action.type = "DONE";
-                return {
-                    ...state,
-                };
+        case 'RED_QUANTITY':
+            state.expenses.map((expense)=>{
+                if(expense.name === action.payload.name) {
+                    expense.quantity = expense.quantity - action.payload.quantity;
+                }
+                expense.quantity = expense.quantity < 0 ? 0: expense.quantity;
+                new_expenses.push(expense);
+                return true;
+            })
+            state.expenses = new_expenses;
+            action.type = "DONE";
+            return {
+                ...state,
+            };
+
         case 'DELETE_ITEM':
             state.expenses.map((expense)=>{
                 if(expense.name === action.payload.name) {
@@ -47,25 +49,27 @@ export const AppReducer = (state, action) => {
             return {
                 ...state,
             };
-            case 'ADD_ITEM':
-                state.expenses.map((expense)=>{
-                    if(expense.name === action.payload.name) {
-                        expense.quantity = expense.quantity + 1;
-                    }
-                    new_expenses.push(expense);
-                    return true;
-                })
-                state.expenses = new_expenses;
-                action.type = "DONE";
-                return {
-                    ...state,
-                };
-    case 'CHG_LOCATION':
+
+        case 'ADD_ITEM':
+            state.expenses.map((expense)=>{
+                if(expense.name === action.payload.name) {
+                    expense.quantity = expense.quantity + 1;
+                }
+                new_expenses.push(expense);
+                return true;
+            })
+            state.expenses = new_expenses;
             action.type = "DONE";
-            state.Location = action.payload;
             return {
-                ...state
-            }
+                ...state,
+            };
+
+        case 'CHG_LOCATION':
+                action.type = "DONE";
+                state.Location = action.payload;
+                return {
+                    ...state
+                }
 
         default:
             return state;
@@ -81,7 +85,8 @@ const initialState = {
         { id: "Dinner set", name: 'Dinner set', quantity: 0, unitprice: 600 },
         { id: "Bags", name: 'Bags', quantity: 0, unitprice: 200 },
     ],
-    Location: '£'
+    Location: '£', 
+    ExpenseLimit: 8000
 };
 
 // 2. Creates the context this is the thing our components import and use to get the state
@@ -104,7 +109,8 @@ state.CartValue = totalExpenses;
                 expenses: state.expenses,
                 CartValue: state.CartValue,
                 dispatch,
-                Location: state.Location
+                Location: state.Location,
+                ExpenseLimit: state.ExpenseLimit
             }}
         >
             {props.children}

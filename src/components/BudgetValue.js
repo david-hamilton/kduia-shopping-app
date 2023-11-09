@@ -2,14 +2,11 @@ import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const BudgetValue = () => {
-    const { expenses, Location, ExpenseLimit } = useContext(AppContext);
-    const totalExpenses = expenses.reduce((total, item) => {
-        return (total += (item.unitprice * item.quantity));
-    }, 0);
-
+    const { Location, ExpenseLimit } = useContext(AppContext);
+    
     return (
         <div className='alert alert-primary'>
-            <span>Cart Value: {Location}{ExpenseLimit}</span>
+            <span>Budget Limit: {Location}{ExpenseLimit}</span>
         </div>
     );
 };

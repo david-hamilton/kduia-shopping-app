@@ -69,7 +69,21 @@ export const AppReducer = (state, action) => {
                 state.Location = action.payload;
                 return {
                     ...state
-                }
+                };
+        
+        case 'INCREASE_BUDGET_BY_10':
+            action.type = "DONE";
+            state.ExpenseLimit = state.ExpenseLimit + 10;
+            return {
+                ...state
+            }
+        case 'DECREASE_BUDGET_BY_10':
+            action.type = "DONE";
+            state.ExpenseLimit = state.ExpenseLimit - 10;
+            return {
+                ...state
+            };
+
 
         default:
             return state;
@@ -87,6 +101,7 @@ const initialState = {
     ],
     Location: '£', 
     ExpenseLimit: 8000
+
 };
 
 // 2. Creates the context this is the thing our components import and use to get the state
